@@ -11,6 +11,7 @@ class Person < Nameable
     @age = age
     @parent_permission = parent_permission
     @id = Random.rand(1..1000)
+    super()
   end
 
   private
