@@ -111,6 +111,7 @@ def execute(library)
     when 6
       list_rentals_byid(library)
     else
+      puts 'Thanks for using this app'
       break
     end
   end
