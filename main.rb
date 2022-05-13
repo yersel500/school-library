@@ -58,7 +58,7 @@ def create_book(library)
   title = gets.chomp
   print 'Author:'
   author = gets.chomp
-  library.create_book(title, author)
+  library.create_book(tile, author)
   puts "Book created successfully\n"
 end
 
