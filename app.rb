@@ -41,18 +41,3 @@ class App
     @rentals.select { |rent| rent.person.id == person_id }
   end
 end
-
-my_app = App.new
-my_app.create_book('Algebra', 'Baldor')
-my_app.create_book('Trigonometry', 'Bigote')
-my_app.create_book('Economy', 'Soto')
-p my_app.books
-my_app.create_teacher(35, 'programming', 'Bray')
-my_app.create_teacher(24, 'bussiness', 'Diana')
-p my_app.people
-my_app.create_rental('5/12/2022', 0, 1)
-my_app.create_rental('5/12/2022', 2, 1)
-my_app.create_rental('5/12/2022', 1, 0)
-p my_app.rentals
-p 'Rentals by id'
-p my_app.list_rentals_byid(1)
