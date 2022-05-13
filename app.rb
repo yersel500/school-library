@@ -29,6 +29,10 @@ class App
   def create_student(age, classroom, name, parent_permission)
     @people << Student.new(age, classroom, name, parent_permission: parent_permission)
   end
+
+  def create_rental(date, book_id, person_id)
+    @rentals << Rental.new(date, @books[book_id], @people[person_id])
+  end
 end
 
 my_app = App.new
