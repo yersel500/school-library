@@ -25,8 +25,8 @@ class App
     @books << Book.new(title, author)
   end
 
-  def create_teacher(age, specializations, name)
-    @people << Teacher.new(age, specializations, name)
+  def create_teacher(age, specialization, name)
+    @people << Teacher.new(age, specialization, name)
   end
 
   def create_student(age, classroom, name, parent_permission)
