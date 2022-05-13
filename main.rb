@@ -1,7 +1,7 @@
 require './app'
 
 def options
-  puts "Welcome to School Library App\n
+  puts "
   Please choose an option by enterin a number:\n
   1- List all books
   2- List all people
@@ -39,7 +39,7 @@ def create_student(library)
     parent_permission = false
   end
   library.create_student(age, 'default', name, parent_permission)
-  puts 'Person created successfully'
+  puts "Person created successfully\n"
 end
 
 def create_teacher(library)
@@ -50,7 +50,7 @@ def create_teacher(library)
   print 'Specialization:'
   specialization = gets.chomp
   library.create_teacher(age, specialization, name)
-  puts 'Person created successfully'
+  puts "Person created successfully\n"
 end
 
 def create_book(library)
@@ -59,33 +59,49 @@ def create_book(library)
   print 'Author:'
   author = gets.chomp
   library.create_book(title, author)
+  puts "Book created successfully\n"
 end
 
 def create_rental(library)
   puts 'Select a book from the following list by number'
-  p library.list_of_books
+  list_of_books(library)
   book_idx = gets.chomp.to_i
   puts 'Select a person from the following list by number (not id)'
-  p library.list_of_people
+  list_of_people(library)
   person_idx = gets.chomp.to_i
   print 'Date: '
   date = gets.chomp
   library.create_rental(date, book_idx, person_idx)
+  puts "Rental created successfully\n"
 end
 
 def list_rentals_byid(library)
   print 'ID of person: '
   person_id = gets.chomp.to_i
-  library.list_rentals_byid(person_id)
+  library.list_rentals_byid(person_id).each_with_index do |rental, idx|
+    puts "#{idx}) Date: #{rental.date}, Book #{rental.book.title} by #{rental.book.author} "
+  end
+end
+
+def list_of_books(library)
+  library.list_of_books.each_with_index do |book, index|
+    puts "#{index}) Title:#{book.title} Author: #{book.author}"
+  end
+end
+
+def list_of_people(library)
+  library.list_of_people.each_with_index do |p, index|
+    puts "#{index}) [#{p.category}] Name:#{p.name} ID: #{p.id} Age:#{p.age}"
+  end
 end
 
 def execute(library)
   loop do
     case options
     when 1
-      p library.list_of_books
+      list_of_books(library)
     when 2
-      p library.list_of_people
+      list_of_people(library)
     when 3
       create_person(library)
     when 4
@@ -93,7 +109,7 @@ def execute(library)
     when 5
       create_rental(library)
     when 6
-      p list_rentals_byid(library)
+      list_rentals_byid(library)
     else
       break
     end
@@ -102,6 +118,7 @@ end
 
 def main
   library = App.new
+  puts "Welcome to School Library App\n"
   execute(library)
 end
 
