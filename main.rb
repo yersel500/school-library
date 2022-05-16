@@ -17,34 +17,6 @@ def options
   gets.chomp.to_i
 end
 
-def create_student(library)
-  print 'Age:'
-  age = gets.chomp.to_i
-  print 'Name:'
-  name = gets.chomp
-  print 'Has parent permission?[y/n]:'
-  permission = gets.chomp
-  case permission
-  when 'y'
-    parent_permission = true
-  when 'n'
-    parent_permission = false
-  end
-  library.create_student(age, 'default', name, parent_permission)
-  puts "Person created successfully\n"
-end
-
-def create_teacher(library)
-  print 'Age:'
-  age = gets.chomp.to_i
-  print 'Name:'
-  name = gets.chomp
-  print 'Specialization:'
-  specialization = gets.chomp
-  library.create_teacher(age, specialization, name)
-  puts "Person created successfully\n"
-end
-
 def create_book(library)
   print 'Title:'
   title = gets.chomp

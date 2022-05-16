@@ -1,3 +1,6 @@
+require './create_student'
+require './create_teacher'
+
 class CreatePerson
   def initialize(library)
     @library = library
@@ -8,9 +11,9 @@ class CreatePerson
     type_person = gets.chomp.to_i
     case type_person
     when 1
-      create_student(@library)
+      CreateStudent.new(@library).create_student
     when 2
-      create_teacher(@library)
+      CreateTeacher.new(@library).create_teacher
     end
   end
 end
