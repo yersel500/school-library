@@ -1,4 +1,5 @@
 require './app'
+require './list_books'
 
 def options
   puts "
@@ -83,12 +84,6 @@ def list_rentals_byid(library)
   end
 end
 
-def list_of_books(library)
-  library.list_of_books.each_with_index do |book, index|
-    puts "#{index}) Title:#{book.title} Author: #{book.author}"
-  end
-end
-
 def list_of_people(library)
   library.list_of_people.each_with_index do |p, index|
     puts "#{index}) [#{p.category}] Name:#{p.name} ID: #{p.id} Age:#{p.age}"
@@ -99,7 +94,7 @@ def execute(library)
   loop do
     case options
     when 1
-      list_of_books(library)
+      ListBooks.new(library).list_of_books
     when 2
       list_of_people(library)
     when 3
