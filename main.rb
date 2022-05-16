@@ -1,5 +1,6 @@
 require './app'
 require './list_books'
+require './create_person'
 
 def options
   puts "
@@ -15,16 +16,16 @@ def options
   gets.chomp.to_i
 end
 
-def create_person(library)
-  puts 'Do you want to create a student(1) or a teacher(2)?'
-  type_person = gets.chomp.to_i
-  case type_person
-  when 1
-    create_student(library)
-  when 2
-    create_teacher(library)
-  end
-end
+# def create_person(library)
+#   puts 'Do you want to create a student(1) or a teacher(2)?'
+#   type_person = gets.chomp.to_i
+#   case type_person
+#   when 1
+#     create_student(library)
+#   when 2
+#     create_teacher(library)
+#   end
+# end
 
 def create_student(library)
   print 'Age:'
@@ -98,7 +99,7 @@ def execute(library)
     when 2
       list_of_people(library)
     when 3
-      create_person(library)
+      CreatePerson.new(library).create_person
     when 4
       create_book(library)
     when 5
