@@ -16,17 +16,6 @@ def options
   gets.chomp.to_i
 end
 
-# def create_person(library)
-#   puts 'Do you want to create a student(1) or a teacher(2)?'
-#   type_person = gets.chomp.to_i
-#   case type_person
-#   when 1
-#     create_student(library)
-#   when 2
-#     create_teacher(library)
-#   end
-# end
-
 def create_student(library)
   print 'Age:'
   age = gets.chomp.to_i
