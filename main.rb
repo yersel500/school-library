@@ -2,6 +2,7 @@ require './app'
 require './list_books'
 require './create_person'
 require './list_people'
+require './create_book'
 
 def options
   puts "
@@ -15,15 +16,6 @@ def options
   7- exit"
 
   gets.chomp.to_i
-end
-
-def create_book(library)
-  print 'Title:'
-  title = gets.chomp
-  print 'Author:'
-  author = gets.chomp
-  library.create_book(title, author)
-  puts "Book created successfully\n"
 end
 
 def create_rental(library)
@@ -57,7 +49,7 @@ def execute(library)
     when 3
       CreatePerson.new(library).create_person
     when 4
-      create_book(library)
+      CreateBook.new(library).create_book
     when 5
       create_rental(library)
     when 6
