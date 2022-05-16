@@ -3,6 +3,7 @@ require './list_books'
 require './create_person'
 require './list_people'
 require './create_book'
+require './create_rental'
 
 def options
   puts "
@@ -16,19 +17,6 @@ def options
   7- exit"
 
   gets.chomp.to_i
-end
-
-def create_rental(library)
-  puts 'Select a book from the following list by number'
-  list_of_books(library)
-  book_idx = gets.chomp.to_i
-  puts 'Select a person from the following list by number (not id)'
-  list_of_people(library)
-  person_idx = gets.chomp.to_i
-  print 'Date: '
-  date = gets.chomp
-  library.create_rental(date, book_idx, person_idx)
-  puts "Rental created successfully\n"
 end
 
 def list_rentals_byid(library)
@@ -51,7 +39,7 @@ def execute(library)
     when 4
       CreateBook.new(library).create_book
     when 5
-      create_rental(library)
+      CreateRental.new(library).create_rental
     when 6
       list_rentals_byid(library)
     else
