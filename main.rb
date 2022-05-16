@@ -4,6 +4,7 @@ require './create_person'
 require './list_people'
 require './create_book'
 require './create_rental'
+require './list_rentals'
 
 def options
   puts "
@@ -17,14 +18,6 @@ def options
   7- exit"
 
   gets.chomp.to_i
-end
-
-def list_rentals_byid(library)
-  print 'ID of person: '
-  person_id = gets.chomp.to_i
-  library.list_rentals_byid(person_id).each_with_index do |rental, idx|
-    puts "#{idx}) Date: #{rental.date}, Book #{rental.book.title} by #{rental.book.author} "
-  end
 end
 
 def execute(library)
@@ -41,7 +34,7 @@ def execute(library)
     when 5
       CreateRental.new(library).create_rental
     when 6
-      list_rentals_byid(library)
+      ListRentals.new(library).list_rentals_byid
     else
       puts 'Thanks for using this app'
       break
