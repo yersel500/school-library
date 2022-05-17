@@ -1,4 +1,4 @@
-require './app'
+require_relative './app'
 require './list_books'
 require './create_person'
 require './list_people'
@@ -6,7 +6,6 @@ require './create_book'
 require './create_rental'
 require './list_rentals'
 require 'json'
-require_relative 'create_book'
 
 def options
   puts "
@@ -40,8 +39,10 @@ def execute(library)
       ListRentals.new(library).list_rentals_byid
     else
       print library.list_of_books
+      # File.write('./data.json',
+      #            JSON.generate({ books: library.list_of_books, people: library.people, rentals: library.rentals }))
       File.write('./data.json',
-                 JSON.generate({ books: library.list_of_books, people: library.people, rentals: library.rentals }))
+                 JSON.generate(library))
       break
     end
   end
@@ -50,8 +51,11 @@ end
 def main
   file = File.read('./data.json')
   data_hash = JSON.parse(file, create_additions: true)
+  books = data_hash.books || []
+  people = data_hash.people || []
+  rentals = data_hash.rentals || []
   puts data_hash
-  library = App.new(data_hash['books'], data_hash['people'], data_hash['rentals'])
+  library = App.new(books, people, rentals)
   puts "Welcome to School Library App\n"
   execute(library)
   puts 'Thanks for using this app'
