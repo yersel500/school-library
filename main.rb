@@ -18,11 +18,10 @@ def main
 
     if choice == 7
       app.save_files
+      puts "Thank you for using this app!\n\n"
       break
     end
     app.run(choice)
   end
-
-  puts "Thank you for using this app!\n\n"
 end
 main
