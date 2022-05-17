@@ -5,6 +5,8 @@ require './list_people'
 require './create_book'
 require './create_rental'
 require './list_rentals'
+require 'json'
+require_relative 'create_book'
 
 def options
   puts "
@@ -24,6 +26,7 @@ def execute(library)
   loop do
     case options
     when 1
+      puts library.books
       ListBooks.new(library).list_of_books
     when 2
       ListPeople.new(library).list_of_people
@@ -36,16 +39,22 @@ def execute(library)
     when 6
       ListRentals.new(library).list_rentals_byid
     else
-      puts 'Thanks for using this app'
+      print library.list_of_books
+      File.write('./data.json',
+                 JSON.generate({ books: library.list_of_books, people: library.people, rentals: library.rentals }))
       break
     end
   end
 end
 
 def main
-  library = App.new
+  file = File.read('./data.json')
+  data_hash = JSON.parse(file, create_additions: true)
+  puts data_hash
+  library = App.new(data_hash['books'], data_hash['people'], data_hash['rentals'])
   puts "Welcome to School Library App\n"
   execute(library)
+  puts 'Thanks for using this app'
 end
 
 main

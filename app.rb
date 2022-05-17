@@ -7,10 +7,10 @@ require './person'
 class App
   attr_reader :books, :people, :rentals
 
-  def initialize
-    @books = []
-    @people = []
-    @rentals = []
+  def initialize(books, people, rentals)
+    @books = books
+    @people = people
+    @rentals = rentals
   end
 
   def list_of_books
@@ -39,5 +39,16 @@ class App
 
   def list_rentals_byid(person_id)
     @rentals.select { |rent| rent.person.id == person_id }
+  end
+
+  def to_json(*args)
+    {
+      JSON.create_id => self.class.name,
+      'a' => [books, people, rentals]
+    }.to_json(*args)
+  end
+
+  def self.json_create(object)
+    new(*object['a'])
   end
 end
