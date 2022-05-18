@@ -5,11 +5,12 @@
 "School Library" is a website that simulate the library of a University. The app allow you to:
 - Add new students or teachers.
 - Add new books.
-- Save records of who borrowed a given book and when.
+- Save data in a JSON file
 
 ## Built With
 - Ruby
 - Rubocop
+- JSON
 
 ## Getting Started
 
@@ -38,6 +39,10 @@ To get a local copy up and running follow these simple example steps.
 - GitHub: [@yersel500](https://github.com/yersel500/)
 - Twitter: [@YerselHurtado](https://twitter.com/YerselHurtado)
 - LinkedIn: [Yersel Hurtado](https://www.linkedin.com/in/yersel-hurtado/)
+
+👤 **Ivan Silva**
+- GitHub: [iKuartz](https://github.com/iKuartz)
+- LinkedIn: [Ivan Barbosa da Silva](https://www.linkedin.com/in/ivan-silva-a47058b3/)
 
 ## 🤝 Contributing
 

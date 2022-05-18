@@ -1,16 +1,18 @@
+require './teacher'
+require './checks'
+
 class CreateTeacher
-  def initialize(library)
-    @library = library
+  include Checks
+
+  def initialize(person)
+    @person = person
   end
 
   def create_teacher
-    print 'Age:'
-    age = gets.chomp.to_i
-    print 'Name:'
-    name = gets.chomp
-    print 'Specialization:'
-    specialization = gets.chomp
-    @library.create_teacher(age, specialization, name)
-    puts "Person created successfully\n"
+    age = numeric(message: "Age:\s")
+    name = not_empty(message: "Name:\s")
+    specialization = not_empty(message: "Specialization:\s")
+    teacher = Teacher.new(specialization, age, name: name)
+    @person << teacher unless @person.include?(teacher)
   end
 end
