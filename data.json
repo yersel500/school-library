@@ -1,1 +1,1 @@
-{}
+{"json_class":"App","books":[],"people":[{"json_class":"Student","name":"Bray","age":30,"parent_permission":true,"id":910},{"json_class":"Teacher","name":"Jose","age":45,"parent_permission":true,"id":258,"specialization":"Algebra"}],"rentals":[]}

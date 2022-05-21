@@ -44,7 +44,9 @@ class App
   def to_json(*args)
     {
       JSON.create_id => self.class.name,
-      'a' => [@books, @people, @rentals]
+      'books' => @books,
+      'people' => @people,
+      'rentals' => @rentals
     }.to_json(*args)
   end
 

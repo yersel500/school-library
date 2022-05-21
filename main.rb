@@ -51,11 +51,11 @@ end
 
 def main
   file = File.read('./data.json')
-  data_hash = JSON.parse(file, create_additions: true)
+  # data_hash = JSON.parse(file, create_additions: true)
   # books = data_hash.books || []
   # people = data_hash.people || []
   # rentals = data_hash.rentals || []
-  puts data_hash
+  # puts data_hash
   library = App.new([], [], [])
   puts "Welcome to School Library App\n"
   execute(library)
