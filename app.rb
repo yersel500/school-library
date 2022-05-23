@@ -19,13 +19,9 @@ class App
   end
 
   def load_books
-    if File.exist?('data.json')
-      data = JSON.parse(File.read('data.json'))
-      data['books'].each do |book|
-        @books << Book.new(book['title'], book['author'])
-      end
-    else
-      []
+    data = parse_data
+    data['books'].each do |book|
+      @books << Book.new(book['title'], book['author'])
     end
   end
 
@@ -100,9 +96,5 @@ class App
 
   def self.json_create(object)
     new(*object['a'])
-  end
-
-  def save_files()
-    File.write('data.json', JSON.generate(App))
   end
 end
